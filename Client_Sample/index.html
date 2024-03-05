@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
-    <model-viewer src="Sample.glb" ar ar-modes="webxr quick-look" camera-controls tone-mapping="commerce" poster="poster.webp" shadow-intensity="1" autoplay animation-name="Body003|Take 001|BaseLayer.001">
+    <model-viewer id="paused-change-demo" src="Sample.glb" ar ar-modes="webxr quick-look" camera-controls tone-mapping="commerce" poster="poster.webp" shadow-intensity="1" autoplay animation-name="Body003|Take 001|BaseLayer.001">
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
@@ -23,5 +23,15 @@
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <script>
+(() => {
+  const modelViewer = document.querySelector('#paused-change-demo');
+
+  self.setInterval(() => {
+    modelViewer.animationName = modelViewer.animationName === 'Body003|Take 001|BaseLayer.001' ?
+      'Object019|Take 001|BaseLayer.001' : 'group1|Take 001|BaseLayer.001' : 'Object002|Take 001|BaseLayer.001';
+  }, 1500.0);
+})();
+</script>
   </body>
 </html>
